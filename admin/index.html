@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Admin Panel</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="main.html">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-grip"></i></div>
+      <span>Admin Panel</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="section-title">GENERAL MANAGEMENT</div>
+        <a href="#" class="nav-item active"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a>
+        <a href="/main.html" class="nav-item" target="_blank" rel="noreferrer"><i class="fa-solid fa-globe"></i><span>View Site</span></a>
+      </div>
+
+      
+     
+    </nav>
+
+    <button class="logout" id="logout-button" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+  </aside>
+
+  <main class="main">
+    <header class="top-card">
+      <div>
+        <h1>Welcome back, <span>Admin!</span></h1>
+        <p>Here's what's happening with your portfolio today.</p>
+      </div>
+
+      <div class="header-right">
+        <div class="clock">
+          <strong id="live-clock">--:--:--</strong>
+          <span id="live-date">Loading date...</span>
+        </div>
+        <div class="profile">
+          <div class="profile-avatar"><i class="fa-regular fa-user"></i></div>
+          <div>
+            <strong>Admin</strong>
+            <small>Administrator</small>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card red">
+        <div class="stat-icon"><i class="fa-regular fa-folder-open"></i></div>
+        <div class="stat-number" data-stat="projects">0</div>
+        <div class="stat-label">Total Projects</div>
+      </article>
+
+      <article class="stat-card green">
+        <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="stat-number" data-stat="skills">0</div>
+        <div class="stat-label">Skills &amp; Technologies</div>
+      </article>
+
+      <article class="stat-card cyan">
+        <div class="stat-icon"><i class="fa-solid fa-person-circle-check"></i></div>
+        <div class="stat-number" data-stat="clients">0</div>
+        <div class="stat-label">Happy Clients</div>
+      </article>
+
+      <article class="stat-card orange">
+        <div class="stat-icon"><i class="fa-regular fa-message"></i></div>
+        <div class="stat-number" data-stat="testimonials">0</div>
+        <div class="stat-label">Client Testimonials</div>
+      </article>
+
+      <article class="stat-card purple">
+        <div class="stat-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div class="stat-number" data-stat="messages">0</div>
+        <div class="stat-label">Contact Messages</div>
+      </article>
+    </section>
+
+    <section class="quick-actions">
+      <div class="section-heading">
+        <h2>Quick Actions</h2>
+        <div class="heading-line"></div>
+      </div>
+
+      <div class="actions-grid">
+        <button type="button" class="action-card" data-open-form="project">
+          <div class="action-icon blue"><i class="fa-solid fa-plus"></i></div>
+          <h3>Add Project</h3>
+          <p>Create a new project</p>
+        </button>
+
+        <button type="button" class="action-card" data-open-form="skill">
+          <div class="action-icon blue"><i class="fa-solid fa-microchip"></i></div>
+          <h3>Add Skill</h3>
+          <p>Add a new skill</p>
+        </button>
+
+        <button type="button" class="action-card" data-open-form="client">
+          <div class="action-icon blue"><i class="fa-solid fa-user-plus"></i></div>
+          <h3>Add Client</h3>
+          <p>Add a new client</p>
+        </button>
+
+        <button type="button" class="action-card" data-open-form="testimonial">
+          <div class="action-icon blue"><i class="fa-regular fa-comment-dots"></i></div>
+          <h3>Add Testimonial</h3>
+          <p>Add a new testimonial</p>
+        </button>
+      </div>
+    </section>
+
+    <section class="content-panels">
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Projects</h3>
+        </div>
+        <ul id="project-list" class="content-list"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Skills</h3>
+        </div>
+        <ul id="skill-list" class="content-list"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Clients</h3>
+        </div>
+        <ul id="client-list" class="content-list"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Testimonials</h3>
+        </div>
+        <ul id="testimonial-list" class="content-list"></ul>
+      </div>
+
+      <div class="panel panel-wide">
+        <div class="panel-header">
+          <h3>Contact Messages</h3>
+        </div>
+        <ul id="message-list" class="content-list"></ul>
+      </div>
+    </section>
+
+    <div id="quick-form-panel" class="quick-form-panel hidden">
+      <div class="quick-form-card">
+        <div class="form-header">
+          <h3 id="form-title">Add Project</h3>
+          <button type="button" id="close-form" class="close-form">×</button>
+        </div>
+
+        <form id="quick-form">
+          <input type="hidden" id="form-type" value="project">
+
+          <div class="field-row">
+            <label for="entry-name">Name</label>
+            <input id="entry-name" name="name" type="text" required>
+          </div>
+
+          <div class="field-row" id="subject-field">
+            <label id="subject-label" for="entry-subject">Project Subject</label>
+            <input id="entry-subject" name="subject" type="text">
+          </div>
+
+          <div class="field-row" id="technology-field">
+            <label id="technology-label" for="entry-technology">Technology</label>
+            <input id="entry-technology" name="technology" type="text">
+          </div>
+
+          <div class="field-row hidden" id="message-field">
+            <label for="entry-message">Quote</label>
+            <textarea id="entry-message" name="message" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="save-button">Save</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <button class="floating-button" aria-label="Help">
+    <i class="fa-regular fa-comment"></i>
+  </button>
+
+  <script src="admin.js"></script>
+  <script>
+    if (localStorage.getItem('portfolioAdminLoggedIn') !== 'true') {
+      window.location.href = 'login.html';
+    }
+
+    const liveClock = document.getElementById('live-clock');
+    const liveDate = document.getElementById('live-date');
+
+    function updateLiveDateTime() {
+      const now = new Date();
+      liveClock.textContent = now.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      liveDate.textContent = now.toLocaleDateString([], {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    updateLiveDateTime();
+    setInterval(updateLiveDateTime, 1000);
+
+    document.getElementById('logout-button').addEventListener('click', function () {
+      localStorage.removeItem('portfolioAdminLoggedIn');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>
