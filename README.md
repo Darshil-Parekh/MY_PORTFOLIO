@@ -2,8 +2,8 @@
 
 A modern, responsive personal portfolio website designed to showcase my projects, skills, experience, and frontend development work.
 🚀 Live Preview
-👉 🚀 Live Preview
-👉 https://darshil-parekh.github.io/Medinova/
+
+👉 https://darshil-parekh.github.io/MY_PORTFOLIO/
 ## 🌐 About the Project
 
 This portfolio was created to provide a simple and professional way to present my work and connect with potential clients, collaborators, and employers.
